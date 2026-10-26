@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CCSB.css?v=37">
+    <link rel="stylesheet" href="CCSB.css?v=38">
     <style>
         /* Carrusel: 3 imágenes simultáneamente con foto central destacada */
         .carousel-track-container {
@@ -195,7 +195,7 @@
         </div>
 
         <!-- Música de fondo -->
-        <audio id="bgMusic" src="musica.mp3" loop preload="auto"></audio>
+        <audio id="bgMusic" src="musica.mp3?v=2" loop preload="auto"></audio>
 
         <!-- Reproductor de música -->
         <div id="musicPlayer" class="music-player" style="display: none;">
@@ -382,12 +382,9 @@
 
         <!-- Modal Código de Vestimenta -->
         <div id="dresscodeModal" class="modal-overlay" onclick="closeDressCodeModal(event)">
-            <div class="dresscode-modal" onclick="event.stopPropagation()">
+            <div class="dresscode-modal dresscode-poster" onclick="event.stopPropagation()">
                 <button class="modal-close" onclick="closeDressCodeModal()" aria-label="Cerrar">&times;</button>
-                <img class="dresscode-img" src="cuento/zapatilla.webp" alt="">
-                <h2 class="modal-title-dark">Código de Vestimenta</h2>
-                <p class="dresscode-formal">Formal</p>
-                <p class="modal-text-dark">Ven vestido para un baile en el palacio.</p>
+                <img src="cuento/codigo-vestimenta.jpg" alt="Código de vestimenta formal: mujeres con vestido largo o corto formal; hombres con traje formal o camisa y pantalón. El color rosado es exclusivo de la quinceañera." loading="lazy">
             </div>
         </div>
 

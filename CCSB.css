@@ -2721,3 +2721,34 @@ html.intro-done .hero-text > .hero-frase { animation-delay: 0.9s; }
     border-radius: 50% !important;
 }
 .gift-modal .copy-btn svg { width: 19px; height: 19px; }
+
+/* Código de vestimenta: imagen */
+.dresscode-poster {
+    padding: 0 !important;
+    width: auto !important;
+    max-width: min(460px, 92vw) !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: 0 24px 50px -16px rgba(60, 25, 35, 0.6) !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+}
+.dresscode-poster img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 88vh;
+    max-height: 88svh;
+    object-fit: contain;
+}
+.dresscode-poster .modal-close {
+    position: absolute;
+    top: 8px; right: 8px;
+    width: 34px; height: 34px;
+    border-radius: 50% !important;
+    background: rgba(255, 249, 242, 0.9) !important;
+    box-shadow: 0 2px 8px rgba(60, 25, 35, 0.25);
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1; font-size: 1.5rem;
+    z-index: 2;
+}
