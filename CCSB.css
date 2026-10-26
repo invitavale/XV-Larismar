@@ -2752,3 +2752,28 @@ html.intro-done .hero-text > .hero-frase { animation-delay: 0.9s; }
     line-height: 1; font-size: 1.5rem;
     z-index: 2;
 }
+
+/* Confirmación por WhatsApp */
+.rsvp-buttons {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    width: 100%;
+}
+.rsvp-buttons .btn-wedding { width: min(290px, 86vw); justify-content: center; gap: 0.6rem !important; }
+.rsvp-buttons .btn-wedding { padding: 0.8rem 1.2rem !important; font-size: 1rem !important; white-space: nowrap; }
+
+/* Ventana de confirmación */
+#rsvpModal { background: rgba(60, 30, 40, 0.55); z-index: 10050; padding: 1rem; }
+.rsvp-modal { padding: 2.2rem 1.25rem 1.8rem !important; max-width: 380px !important; width: 100% !important; }
+.rsvp-modal .modal-text-dark { margin-bottom: 1.3rem; }
+.rsvp-modal .btn-wedding {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+    width: 100%; max-width: 290px;
+    padding: 0.8rem 1.2rem; font-size: 1rem; font-weight: 600; white-space: nowrap;
+    border-radius: 999px; border: 1px solid var(--oro);
+    background: linear-gradient(90deg, #A95F73 0%, #D98FA3 100%); color: #fff; cursor: pointer;
+}
+.rsvp-section .rsvp-open { gap: 0.6rem !important; padding: 0.8rem 1.8rem !important; }

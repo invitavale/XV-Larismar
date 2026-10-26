@@ -522,7 +522,7 @@ function openLocation(location) {
     // Enlaces de ejemplo (dirección ficticia) - ceremonia y celebración
     // Ubicación del Rancho El Rinconcito
     const mapsUrls = {
-        reception: "https://maps.app.goo.gl/A1SZeyBQ2HJAWM5q8"
+        reception: "https://maps.app.goo.gl/dHvXUbJ8bTWbHbYF8"
     };
     const mapsUrl = mapsUrls[location] || mapsUrls.reception;
     window.open(mapsUrl, '_blank');
@@ -565,12 +565,22 @@ function closeGiftModal() {
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { closeGiftModal(); closeDressCodeModal(); }
+    if (e.key === 'Escape') { closeGiftModal(); closeDressCodeModal(); closeRsvp(); }
 });
 
-function confirmAttendance() {
-    // Ejemplo: aquí se debe colocar el enlace real al formulario de Google Forms.
-    window.open('https://docs.google.com/forms/d/e/1FAIpQLSdIYoM33yAkMmS4DZCRVmO9_IE0gZT4eEw8cV0r2PgWlYE0Ag/viewform?usp=header', '_blank');
+function showRsvp() {
+    const m = document.getElementById('rsvpModal');
+    if (m) m.style.display = 'flex';
+}
+function closeRsvp() {
+    const m = document.getElementById('rsvpModal');
+    if (m) m.style.display = 'none';
+}
+
+// Confirmación directa por WhatsApp (Xiomara: 809-743-8038 · Larismar: 809-842-3801)
+function confirmAttendance(numero) {
+    const msg = '¡Hola! Confirmo mi asistencia a los XV años de Larismar el sábado 26 de diciembre. 👑';
+    window.open('https://wa.me/' + (numero || '18097438038') + '?text=' + encodeURIComponent(msg), '_blank');
 }
 
 // Sistema de Toast
@@ -724,7 +734,7 @@ function setupScrollReveal() {
         { sel: '.carousel-container', cls: '' },
         { sel: '.carousel-counter', cls: '' },
         { sel: '.party-card', cls: '', stagger: 0.2, alt: true },
-        { sel: '.rsvp-container > .btn-wedding, .gift-open', cls: '' },
+        { sel: '.rsvp-open, .gift-open', cls: '' },
         { sel: '.footer-content > *', cls: '', stagger: 0.15 }
     ];
 
