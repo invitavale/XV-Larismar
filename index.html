@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es" class="intro-lock">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Larismar - Mis XV Años</title>
+    <meta name="description" content="Érase una vez… Te invitamos a los XV años de Larismar. Sábado 26 de diciembre de 2026.">
+    <link rel="preload" as="image" href="intro-poster.jpg">
+    <link rel="preload" as="image" href="portada.jpg">
+    <link rel="preload" as="image" href="mariposa.webp">
+    <link rel="preload" as="image" href="cuento/tiara.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CCSB.css?v=37">
+    <style>
+        /* Carrusel: 3 imágenes simultáneamente con foto central destacada */
+        .carousel-track-container {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+            overflow: visible;
+        }
+        .carousel-item {
+            flex: 0 0 33.333%; /* 3 imágenes por fila en PC */
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0; /* usamos gap del track para separación */
+        }
+        .carousel-item img {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 0;
+            box-shadow: 0 10px 24px rgba(169,95,115,0.35);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        /* Marco tipo polaroid ajustado al tamaño real de cada foto:
+           delgado en los tres lados y un poco más grueso en la base. */
+        .framed-photo {
+            width: auto !important;
+            height: auto !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+            box-sizing: border-box !important;
+            margin: 0 auto;
+            object-fit: contain !important;
+            background: #A95F73 !important;
+            border: 6px solid #A95F73 !important;
+            border-bottom-width: 20px !important;
+        }
+
+        @media (min-width: 769px) {
+            .carousel-item.is-center .framed-photo {
+                transform: scale(1.12) rotate(-0.2deg);
+                box-shadow: 0 34px 68px rgba(201,168,93,0.45);
+            }
+        }
+        
+        /* Mobile: una imagen centrada */
+        @media (max-width: 768px) {
+            .carousel-item {
+                flex: 0 0 100% !important; /* 1 imagen por vista en móvil */
+                padding: 0 6px !important;
+                height: 380px !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+            .carousel-item img {
+                width: auto !important;
+                height: auto !important;
+                max-width: 100% !important;
+                max-height: 380px !important;
+                object-fit: contain !important;
+                transform: none !important;
+            }
+            .framed-photo {
+                border-width: 4px !important;
+                border-bottom-width: 14px !important;
+            }
+            
+            .carousel-track-container {
+                height: auto !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel-item img {
+                width: auto !important;
+                height: auto !important;
+                max-width: 100% !important;
+                max-height: 320px !important;
+                object-fit: contain !important;
+                border-radius: 0;
+                transform: none !important;
+            }
+            .framed-photo {
+                border-width: 3px !important;
+                border-bottom-width: 10px !important;
+            }
+            
+            .carousel-item {
+                flex: 0 0 100% !important;
+                padding: 0 8px !important;
+                height: 320px !important;
+            }
+            
+            .carousel-track-container {
+                height: auto !important;
+            }
+        }
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2;
+            padding: 0 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        /* Ajuste temporal: mantener altura visible sin tocar el attachment */
+        @media (min-width: 1025px) {
+            .hero-section {
+                background-image: none !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-center">
+        <!-- Frase del cuento: aparece después del video de la puerta.
+             Una mariposa va "escribiendo" el texto. -->
+        <div id="storyIntro" class="story-intro" aria-hidden="true">
+            <div class="story-sparkles" aria-hidden="true"></div>
+            <div class="story-flies" aria-hidden="true">
+                <img src="mariposa.webp" alt="" class="sf sf1">
+                <img src="mariposa.webp" alt="" class="sf sf2">
+                <img src="mariposa.webp" alt="" class="sf sf3">
+                <img src="mariposa.webp" alt="" class="sf sf4">
+                <img src="mariposa.webp" alt="" class="sf sf5">
+                <img src="mariposa.webp" alt="" class="sf sf6">
+            </div>
+            <div class="story-card" id="storyCard">
+                <img class="story-tiara" src="cuento/tiara.webp" alt="">
+                <p class="story-line story-once" data-type>Érase una vez…</p>
+                <p class="story-line story-text" data-type>una princesa que creció rodeada de amor, y hoy sus quince primaveras se convierten en un sueño hecho realidad.</p>
+                <p class="story-line story-blessing" data-type>Con la bendición de Dios</p>
+                <p class="story-line story-parents"><span data-type>Xiomara Polanco</span><span class="story-amp" data-type>&amp;</span><span data-type>Víctor Paulino</span></p>
+                <p class="story-line story-text" data-type>tenemos el honor de invitarte a celebrar los XV años de nuestra hija</p>
+                <h1 class="story-line story-name" data-type>Larismar</h1>
+                <img class="story-divider" src="cuento/divisor-gema.webp" alt="">
+                <img class="story-butterfly" id="storyButterfly" src="mariposa.webp" alt="">
+            </div>
+        </div>
+
+        <!-- Intro: video de la puerta del palacio -->
+        <div id="introVideo" class="intro-video" role="button" tabindex="0"
+             aria-label="Toca para abrir la invitación de Larismar">
+            <video id="doorVideo" poster="intro-poster.jpg?v=2"
+                   playsinline webkit-playsinline preload="auto">
+                <source src="intro.mp4?v=2" type="video/mp4">
+                <source src="intro.webm?v=2" type="video/webm">
+            </video>
+            <div class="intro-light"></div>
+            <button class="intro-hint" type="button" tabindex="-1">
+                <span class="intro-play" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
+                </span>
+                Toca para abrir
+            </button>
+        </div>
+
+        <!-- Música de fondo -->
+        <audio id="bgMusic" src="musica.mp3" loop preload="auto"></audio>
+
+        <!-- Reproductor de música -->
+        <div id="musicPlayer" class="music-player" style="display: none;">
+            <button id="musicToggle" class="music-button modern-icon" title="Reproducir/Pausar música">
+                <svg id="volumeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="#A95F73" stroke="#fff" stroke-width="1"></polygon>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.08" stroke="#A95F73" stroke-width="2"></path>
+                    <circle cx="6.5" cy="12" r="1" fill="#D98FA3"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Portada -->
+        <div class="hero-section" data-butterflies="2">
+            <div class="hero-blur" aria-hidden="true"></div>
+            <img class="hero-bg" src="portada.jpg" alt="Larismar, mis XV años">
+            <div class="hero-overlay"></div>
+            <div class="top-garland">
+                <img src="separador-flores.png" alt="">
+            </div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="date date-hidden" aria-hidden="true">26.12.2026</div>
+                    <p class="hero-kicker">Mis XV Años</p>
+                    <h1 class="names">Larismar</h1>
+                    <p class="hero-frase">Como en los cuentos de hadas,<br>hoy comienza un nuevo capítulo de mi historia.</p>
+                    <div class="scroll-indicator">
+                        <div class="scroll-mouse">
+                            <div class="scroll-wheel"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenido -->
+        <div class="content">
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+
+        <!-- Cuenta regresiva -->
+        <section class="countdown-section" data-butterflies="1">
+            <h2 class="section-title">Faltan</h2>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">DÍAS</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">HORAS</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">MINUTOS</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">SEGUNDOS</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mis XV Años -->
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+        <section class="events-section" data-butterflies="2">
+            <div class="events-container events-container-single">
+                <div class="event-card xv-card">
+                    <div class="event-icon fairy-icon fairy-icon-wide">
+                        <img src="cuento/tiara.webp" alt="Tiara dorada" class="icon-img">
+                    </div>
+                    <h3 class="event-title">Mis XV Años</h3>
+                    <div class="event-details">
+                        <h4>Día</h4>
+                        <p>Sábado 26 de diciembre de 2026</p>
+                    </div>
+                    <div class="event-details">
+                        <h4>Hora</h4>
+                        <p>7:00 PM</p>
+                    </div>
+                    <div class="event-details">
+                        <h4>Lugar</h4>
+                        <p>Rancho El Rinconcito</p>
+                    </div>
+                    <button class="btn-wedding" onclick="openLocation('reception')">¿Cómo llegar?</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detalles -->
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+        <section class="party-section" data-butterflies="3">
+            <div class="party-container">
+                <h2 class="section-title">Detalles</h2>
+                <p class="section-subtitle">Algunos detalles para que este día de cuento sea perfecto.</p>
+
+                <div class="party-grid">
+                    <div class="party-card">
+                        <div class="party-icon fairy-icon fairy-icon-wide">
+                            <img src="cuento/zapatilla.webp" alt="Zapatilla de cristal" class="icon-img">
+                        </div>
+                        <h3>Código de Vestimenta</h3>
+                        <button class="btn-wedding" onclick="showDressCode()">Ver más</button>
+                    </div>
+
+                    <div class="party-card">
+                        <div class="party-icon modern-icon">
+                            <svg width="70" height="70" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="6" y="18" width="52" height="36" rx="6" fill="#A95F73"/>
+                                <rect x="24" y="10" width="16" height="10" rx="2" fill="#A95F73"/>
+                                <circle cx="32" cy="36" r="11" fill="#FFF9F2"/>
+                                <circle cx="32" cy="36" r="6" fill="#A95F73"/>
+                                <circle cx="48" cy="26" r="2.5" fill="#FFF9F2"/>
+                            </svg>
+                        </div>
+                        <h3>Comparte tus Fotos</h3>
+                        <p>Ayúdanos a capturar cada momento, sube las fotos que tomes durante la fiesta.</p>
+                        <button class="btn-wedding" onclick="sharePhotos()">Subir Fotos</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regalos -->
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+        <section class="gifts-section" data-butterflies="2">
+            <div class="gifts-container">
+                <h2 class="section-title">Regalos</h2>
+                <p class="section-subtitle">Tu presencia es mi mejor regalo. Si deseas tener un detalle conmigo, puedes hacerlo aquí.</p>
+
+                <div class="gift-icon gift-icon-lazo">
+                    <img src="cuento/regalo.webp" alt="Caja de regalo" class="icon-img">
+                </div>
+
+                <button class="btn-wedding gift-open" type="button" onclick="showGifts()">Ver más</button>
+            </div>
+        </section>
+
+        <!-- Confirmación -->
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+        <section class="rsvp-section" data-butterflies="1">
+            <div class="rsvp-container">
+                <h2 class="section-title">Confirma tu Asistencia</h2>
+                <p class="section-subtitle">Tu lugar en este cuento es muy especial. Por favor confírmanos si podrás acompañarnos.</p>
+
+                <div class="whatsapp-icon modern-icon">
+                    <svg width="80" height="80" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="8" y="4" width="32" height="40" rx="3" fill="#A95F73"/>
+                        <path d="M28 4v9a3 3 0 0 0 3 3h9" fill="#3A2A1C"/>
+                        <rect x="14" y="20" width="20" height="2.4" rx="1.2" fill="#fff"/>
+                        <rect x="14" y="26" width="20" height="2.4" rx="1.2" fill="#fff"/>
+                        <rect x="14" y="32" width="13" height="2.4" rx="1.2" fill="#fff"/>
+                        <circle cx="34" cy="34" r="8" fill="#fff"/>
+                        <path d="M30.5 34l2.3 2.3 4.3-4.6" stroke="#A95F73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                </div>
+
+                <button class="btn-wedding" onclick="confirmAttendance()">Confirmar Asistencia</button>
+            </div>
+        </section>
+
+        <!-- Final -->
+        <div class="section-divider">
+            <img src="separador-flores.png" alt="">
+        </div>
+        <footer class="footer" data-butterflies="1">
+            <div class="footer-content">
+                <img class="footer-tiara" src="cuento/tiara.webp" alt="">
+                <p>…y vivieron felices para siempre.</p>
+                <h3>Larismar</h3>
+                <p class="footer-date">26 de diciembre, 2026</p>
+            </div>
+        </footer>
+        </div>
+
+        <!-- Modal Código de Vestimenta -->
+        <div id="dresscodeModal" class="modal-overlay" onclick="closeDressCodeModal(event)">
+            <div class="dresscode-modal" onclick="event.stopPropagation()">
+                <button class="modal-close" onclick="closeDressCodeModal()" aria-label="Cerrar">&times;</button>
+                <img class="dresscode-img" src="cuento/zapatilla.webp" alt="">
+                <h2 class="modal-title-dark">Código de Vestimenta</h2>
+                <p class="dresscode-formal">Formal</p>
+                <p class="modal-text-dark">Ven vestido para un baile en el palacio.</p>
+            </div>
+        </div>
+
+        <!-- Ventana de Regalos -->
+        <div id="giftModal" class="modal-overlay" onclick="closeGiftModal()">
+            <div class="dresscode-modal gift-modal" onclick="event.stopPropagation()" role="dialog" aria-label="Datos para regalo">
+                <button class="modal-close" onclick="closeGiftModal()" aria-label="Cerrar">&times;</button>
+                <img class="gift-modal-img" src="cuento/regalo.webp" alt="">
+                <h2 class="modal-title-dark">Regalos</h2>
+                <p class="gift-type">Cuenta de ahorros</p>
+                <p class="gift-bank">Banco de Reservas</p>
+
+                <div class="gift-box">
+                    <div class="gift-line">
+                        <div class="gift-data">
+                            <span class="gift-label">A nombre de</span>
+                            <span class="gift-value gift-name">Xiomara Polanco</span>
+                        </div>
+                    </div>
+                    <div class="gift-line">
+                        <div class="gift-data">
+                            <span class="gift-label">No. de cuenta</span>
+                            <span class="gift-value">9609858685</span>
+                        </div>
+                        <button class="copy-btn" type="button" data-copy="9609858685" data-what="Número de cuenta" aria-label="Copiar número de cuenta">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        </button>
+                    </div>
+                    <div class="gift-line">
+                        <div class="gift-data">
+                            <span class="gift-label">Cédula</span>
+                            <span class="gift-value">09500163861</span>
+                        </div>
+                        <button class="copy-btn" type="button" data-copy="09500163861" data-what="Cédula" aria-label="Copiar cédula">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="gift-thanks">¡Gracias por ser parte de mi cuento!</p>
+            </div>
+        </div>
+
+        <!-- Aviso -->
+        <div id="toast" class="toast">
+            <div id="toastContent"></div>
+        </div>
+
+        <script>
+        (function() {
+            try {
+                if ('caches' in window) {
+                    caches.keys().then(keys => keys.forEach(k => caches.delete(k))).catch(() => {});
+                }
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister())).catch(() => {});
+                }
+            } catch(e) {}
+        })();
+        </script>
+        <script src="JAVAB.js?v=36" defer></script>
+</body>
+</html>
