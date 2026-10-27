@@ -2777,3 +2777,28 @@ html.intro-done .hero-text > .hero-frase { animation-delay: 0.9s; }
     background: linear-gradient(90deg, #A95F73 0%, #D98FA3 100%); color: #fff; cursor: pointer;
 }
 .rsvp-section .rsvp-open { gap: 0.6rem !important; padding: 0.8rem 1.8rem !important; }
+
+/* Bendición encima de Mis XV Años */
+.events-container-single { flex-direction: column; align-items: center; gap: 2rem; }
+.events-container-single .event-card { max-width: 480px; width: 100%; }
+.blessing-icon { width: 6.5rem !important; height: 8rem !important; }
+.blessing-card { padding-bottom: 1.4rem !important; }
+.blessing-card .event-details { margin-bottom: 0.4rem; }
+
+/* Fecha límite para confirmar */
+.rsvp-deadline {
+    order: 1;
+    display: inline-block;
+    margin: -0.8rem auto 1.8rem;
+    padding: 0.55rem 1.3rem;
+    border-radius: 999px;
+    background: #FFF9F2;
+    border: 1px solid rgba(201, 164, 92, 0.7);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.6);
+    font-family: var(--hada-serif);
+    font-size: 1.15rem;
+    color: var(--hada-texto);
+}
+.rsvp-deadline strong { color: var(--hada-rosa); font-weight: 700; }
+.rsvp-deadline-sm { margin: -0.6rem auto 1.2rem; font-size: 1rem; box-shadow: none; }
+.event-details h4, .rsvp-deadline { font-variant-numeric: lining-nums; }
